@@ -15,6 +15,11 @@ const {
 } = useAsyncData(getDomainDetail, 'Unable to load domain detail.')
 
 const isVerbose = ref(false)
+const isSidebarOpen = ref(true)
+
+const toggleSidebar = () => {
+  isSidebarOpen.value = !isSidebarOpen.value
+}
 
 const userErrorMessage = computed(() =>
   error.value ? getUserErrorMessage(error.value) : ''
@@ -27,10 +32,13 @@ onMounted(() => {
 
 <template>
   <div class="app">
-    <AppTopBar />
+    <AppTopBar @toggle-sidebar="toggleSidebar" />
 
-    <div class="app-layout">
-      <AppSidebar />
+    <div
+      class="app-layout"
+      :class="{ 'app-layout--sidebar-open': isSidebarOpen }"
+    >
+      <AppSidebar v-if="isSidebarOpen" />
 
       <main class="app-main">
         <div v-if="isLoading">Loading domain detail...</div>
@@ -61,8 +69,12 @@ onMounted(() => {
 
 .app-layout {
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: 1fr;
   min-height: calc(100vh - 64px);
+}
+
+.app-layout--sidebar-open {
+  grid-template-columns: 240px 1fr;
 }
 
 .app-main {
@@ -78,7 +90,8 @@ onMounted(() => {
 }
 
 @media (max-width: 1024px) {
-  .app-layout {
+  .app-layout,
+  .app-layout--sidebar-open {
     grid-template-columns: 1fr;
   }
 

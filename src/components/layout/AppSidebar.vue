@@ -54,10 +54,4 @@ const items = ['* Registry']
   font-weight: 600;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
-
-@media (max-width: 1024px) {
-  .sidebar {
-    display: none;
-  }
-}
 </style>
