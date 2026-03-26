@@ -30,3 +30,40 @@ textarea,
 select {
   font: inherit;
 }
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.card-title{
+    margin: 0;
+    line-height: 1;
+    color: #24364b;
+    font-size: 20px;
+}
+.card-label{
+    margin: 0;
+    color: #24364b;
+    font-weight: 500;
+}
+
+.card-link{
+    margin: 0;
+    color: #0077ff;
+    font-size: 14px;
+    font-weight: 500;
+    word-break: break-word;
+}
+.card-value{
+    margin: 0;
+    color: #6c7a89;
+    font-size: 14px;
+    font-weight: 500;
+    word-break: break-word;
+}
+
+.card-label__wrap {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

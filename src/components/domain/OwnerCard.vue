@@ -4,7 +4,7 @@ import type { PublishableContact } from '../../types/domainDetail'
 import { EyeIcon, EyeOffIcon } from 'lucide-vue-next'
 
 type Props = {
-    contact: PublishableContact
+    owner: PublishableContact
     verbose: boolean
 }
 
@@ -22,34 +22,33 @@ const getDisplayValue = (value: string, isVisible: boolean) => {
 <template>
     <BaseCard>
         <div class="card">
-
-            <h2 class="card-title">Administrative contacts:</h2>
-
+            <h2 class="card-title">Owner:</h2>
             <dl>
-                <div class="contacts-card__row">
+                <div class="owner-card__row">
                     <dt class="card-label">Handle</dt>
-                    <dd class="card-link">{{ contact.handle }}</dd>
+                    <dd class="card-link">{{ props.owner.handle }}</dd>
                 </div>
 
-                <div class="contacts-card__row">
+                <div class="owner-card__row">
+
                     <dt class="card-label__wrap">
-                        <EyeOffIcon v-if="props.contact.publish.organization === false" class="icon-red" />
-                        <EyeIcon v-if="props.contact.publish.organization === true" class="icon-green" />
+                        <EyeOffIcon v-if="props.owner.publish.organization === false" class="icon-red" />
+                        <EyeIcon v-if="props.owner.publish.organization === true" class="icon-green" />
                         <span class="card-label">Organization</span>
                     </dt>
                     <dd class="card-value">
-                        {{ getDisplayValue(contact.organization, contact.publish.organization) }}
+                        {{ getDisplayValue(props.owner.organization, props.owner.publish.organization) }}
                     </dd>
                 </div>
 
-                <div class="contacts-card__row">
+                <div class="owner-card__row">
                     <dt class="card-label__wrap">
-                        <EyeOffIcon v-if="props.contact.publish.name === false" class="icon-red" />
-                        <EyeIcon v-if="props.contact.publish.name === true" class="icon-green" />
+                        <EyeOffIcon v-if="props.owner.publish.name === false" class="icon-red" />
+                        <EyeIcon v-if="props.owner.publish.name === true" class="icon-green" />
                         <span class="card-label">Name</span>
                     </dt>
                     <dd class="card-value">
-                        {{ getDisplayValue(contact.name, contact.publish.name) }}
+                        {{ getDisplayValue(props.owner.name, props.owner.publish.name) }}
                     </dd>
                 </div>
             </dl>
@@ -58,7 +57,7 @@ const getDisplayValue = (value: string, isVisible: boolean) => {
 </template>
 
 <style scoped>
-.contacts-card__row {
+.owner-card__row {
     display: grid;
     grid-template-columns: minmax(140px, 180px) 1fr;
     gap: 12px;
@@ -66,17 +65,16 @@ const getDisplayValue = (value: string, isVisible: boolean) => {
     border-top: 1px solid #e6edf3;
 }
 
-.contacts-card__row:last-child {
+.owner-card__row:last-child {
     padding-bottom: 0;
 }
 
 @media (max-width: 640px) {
-    .contacts-card__row {
+    .owner-card__row {
         grid-template-columns: 1fr;
         gap: 6px;
     }
 }
-
 
 .icon-green {
     color: #28a745;

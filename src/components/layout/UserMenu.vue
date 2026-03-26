@@ -7,9 +7,9 @@ import { UserCircle2Icon, LucideLogOut } from 'lucide-vue-next'
         <ul class="user-menu__list">
             <li class="user-menu__item">
                 <div class="user-menu__button">
-                    <UserCircle2Icon class="user-icon" />
+                    <UserCircle2Icon class="icon" />
                     <div class="user-menu__user-details">
-                        <span>John Doe</span>
+                        <span class="user-menu__user-name">John Doe</span>
                         <span>Admin</span>
                     </div>
                 </div>
@@ -19,7 +19,7 @@ import { UserCircle2Icon, LucideLogOut } from 'lucide-vue-next'
             </li>
             <li class="user-menu__item">
                 <button type="button" class="user-menu__button">
-                    <LucideLogOut class="user-icon" />
+                    <LucideLogOut class="icon" />
                     <span>Logout</span>
                 </button>
             </li>
@@ -28,23 +28,14 @@ import { UserCircle2Icon, LucideLogOut } from 'lucide-vue-next'
 </template>
 
 <style scoped>
-.separator {
-    display: block;
-    background: #d9e0e7;
-    width: 100%;
-    height: 1px;
-    background: #000000;
-}
-
 .user-menu {
     position: absolute;
     top: calc(100% + 8px);
     right: 0;
-    min-width: 180px;
-    padding: 8px;
+    min-width: 250px;
+    padding: 12px;
     background: #ffffff;
     border: 1px solid #d9e0e7;
-    border-radius: 10px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     z-index: 20;
 }
@@ -57,15 +48,15 @@ import { UserCircle2Icon, LucideLogOut } from 'lucide-vue-next'
     color: #24364b;
 }
 
+.user-menu__user-name {
+    font-weight: 500;
+    font-size: 15px;
+}
+
 .user-menu__list {
     list-style: none;
     margin: 0;
     padding: 0;
-}
-
-.user-menu__item+.user-menu__item {
-
-    margin-top: 4px;
 }
 
 .user-menu__button {
@@ -79,9 +70,26 @@ import { UserCircle2Icon, LucideLogOut } from 'lucide-vue-next'
     background: transparent;
     cursor: pointer;
     color: #24364b;
+    align-items: center;
+    gap: 20px;
 }
 
 .user-menu__button:hover {
     background: #f4f7fa;
+}
+
+.separator {
+    display: block;
+    background: #d9e0e7;
+    width: 100%;
+    height: 1px;
+    margin: 7px 0;
+    background: #24364b;
+}
+
+.icon {
+    color: #24364b;
+    width: 32px;
+    height: 32px;
 }
 </style>

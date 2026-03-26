@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { UserCircle2Icon,Menu } from 'lucide-vue-next'
+import { UserCircle2Icon, Menu } from 'lucide-vue-next'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import UserMenu from './UserMenu.vue'
 
@@ -53,18 +53,18 @@ onBeforeUnmount(() => {
     <header class="topbar">
         <div class="topbar__left">
             <button class="icon-button" type="button" aria-label="Toggle sidebar" @click="emit('toggle-sidebar')">
-               <Menu class="menu-icon" />
-                <span class="app-title">
-                    Ferda
-                </span>
+                <Menu class="menu-icon" />
             </button>
+            <span class="app-title">
+                Ferda
+            </span>
         </div>
 
         <div ref="topbarRightRef" class="topbar__right">
             <button class="user-button" type="button" aria-haspopup="menu" :aria-expanded="isUserMenuOpen"
                 @click="toggleUserMenu">
                 <UserCircle2Icon class="user-icon" />
-                <span class="user-name">John Doe</span>
+                <span class="user-name">Jan Musílek</span>
             </button>
 
             <UserMenu v-if="isUserMenuOpen" />
@@ -75,56 +75,69 @@ onBeforeUnmount(() => {
 <style scoped>
 .app-title {
     display: inline;
-    color: #24364b;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: larger;
 }
+
 .topbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     min-height: 64px;
     padding: 0 20px;
-    background: #ffffff;
+    background: #027cff;
     border-bottom: 1px solid #d9e0e7;
 }
 
 .topbar__left,
 .topbar__right {
     display: flex;
+    flex-direction: row;
+    gap: 30px;
+    min-height: 64px;
     align-items: center;
 }
 
 .topbar__right {
     position: relative;
+    padding-right: 30px;
 }
 
 .icon-button {
-    display: inline-flex;
-    gap: 30px;
-    border: none;
-    background: #fff;
+    display: flex;
+    border: 1px solid transparent;
+    background: transparent;
     border-radius: 6px;
     cursor: pointer;
-    color: #24364b;
-}
-.user-button:hover,
-.icon-button:hover {
-    background: #f4f7fa;
+    color: #ffffff;
 }
 
 .user-button {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: #ffffff;
+    padding: 2px;
+    border: none;
 }
 
-.user-icon {
-  width: 18px;
-  height: 18px;
+.icon-button:hover,
+.user-button:hover {
+    scale: 1.1;
 }
 
-.user-name{
-        margin-left: 8px;
-        text-transform: uppercase;
+.user-icon,
+.menu-icon {
+    align-self: center;
+    width: 23px;
+    height: 23px;
+}
+
+.user-name {
+    margin-left: 10px;
+    text-transform: uppercase;
 }
 
 @media (max-width: 768px) {
